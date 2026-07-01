@@ -1,3 +1,5 @@
+package com.gerenciamento.bibloteca;
+
 public class AddAtendente extends AddBibliotecario {
     @Override
     public String getNome() {

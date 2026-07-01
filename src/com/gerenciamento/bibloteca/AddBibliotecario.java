@@ -1,7 +1,10 @@
+package com.gerenciamento.bibloteca;
+
 public class AddBibliotecario{
     private String nome;
     private String endereco;
     private int telefone;
+    private int senhaUsuario;
     private double salario;
 
     public String getNome() {
@@ -25,14 +28,15 @@ public class AddBibliotecario{
         this.telefone = telefone;
     }
 
+    public int getSenhaUsuario(){return senhaUsuario;}
+    public void setSenhaUsuario(int senhaUsuario){this.senhaUsuario = senhaUsuario;}
+
     public double getSalario() {
         return salario;
     }
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
+    public void setSalario(double salario) {this.salario = salario;}
 
-    public static class Gerenciamento extends Livro{
+    public static class Gerenciamento extends Livros {
         @Override
         public String getTituloDoLivro() {
             return super.getTituloDoLivro();
@@ -68,5 +72,7 @@ public class AddBibliotecario{
         public void setAutorDoLivro(String autorDoLivro) {
             super.setAutorDoLivro(autorDoLivro);
         }
+
+
     }
 }

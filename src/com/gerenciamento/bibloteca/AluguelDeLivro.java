@@ -1,4 +1,6 @@
-public class AluguelDeLivro extends Livro{
+package com.gerenciamento.bibloteca;
+
+public class AluguelDeLivro extends Livros {
     private String nomecliente;
     private int telefone;
     private int dataSainda;
