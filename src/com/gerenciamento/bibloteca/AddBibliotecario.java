@@ -72,7 +72,9 @@ public class AddBibliotecario{
         public void setAutorDoLivro(String autorDoLivro) {
             super.setAutorDoLivro(autorDoLivro);
         }
+    }
 
-
+    public String toString(){
+        return "Bibliotecario [Nome: " + this.getNome() + ", Endereço: " + this.getEndereco() + ", telefone: " + this.getTelefone() + ", salario: " + this.getSalario() + ", senha unica: " + this.getSenhaUsuario() + "]";
     }
 }

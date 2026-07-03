@@ -19,20 +19,29 @@ public class Main {
         System.out.println("4 - ");
         System.out.println("5 - ");
 
-        int opcao = scanner.nextInt();
+        byte opcao = scanner.nextByte();
+        boolean mainMenu = true;
 
         scanner.nextLine();
 
-        switch (opcao){
-            case 1:
-                System.out.println("Digite a senha:");
-                senhaDeAdminstracao.verificaSenha(scanner.nextLine());
-                break;
-            case 2:
-                System.out.println("Digite a senha:");
-                break;
-            default:
-                break;
+        while (mainMenu) {
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite a senha:");
+                    senhaDeAdminstracao.verificaSenha(scanner.nextLine());
+                    break;
+                case 2:
+                    System.out.println("Digite a senha:");
+                    int senha = scanner.nextInt();
+                    if (senha == ArrayDados.listaDeBibliotecarios.get(4).getSenhaUsuario()) {
+                    }
+                    break;
+                default:
+                    mainMenu = false;
+                    break;
+            }
+
+            ArrayDados.listaDeAtendetes.forEach(System.out::println);
         }
     }
 }

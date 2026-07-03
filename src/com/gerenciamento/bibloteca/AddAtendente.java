@@ -37,4 +37,7 @@ public class AddAtendente extends AddBibliotecario {
         super.setSalario(salario);
     }
 
+    public String toString(){
+        return "Atendente [Nome: " + this.getNome() + ", Endereço: " + this.getEndereco() + ", telefone: " + this.getTelefone() + ", salario: " + this.getSalario() + "]";
+    }
 }

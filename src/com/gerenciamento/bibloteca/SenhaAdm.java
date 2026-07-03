@@ -23,7 +23,7 @@ public class SenhaAdm {
             System.out.println("Acesso concedido");
             System.out.println("1 - Adicionar Atendente");
             System.out.println("2 - Adicionar Bibliotecario");
-            int opcao = scanner.nextInt();
+            byte opcao = scanner.nextByte();
             scanner.nextLine();
             switch (opcao){
                 case 1:
@@ -56,7 +56,6 @@ public class SenhaAdm {
                     novoBibliotecario.setSalario(scanner.nextDouble());
                     System.out.println("Digite a Senha Unica");
                     novoBibliotecario.setSenhaUsuario(scanner.nextInt());
-
                     System.out.println("Cadastro de Bibliotecario concluido");
                     System.out.println("Nome: " + novoBibliotecario.getNome());
                     System.out.println("Ederenço: " + novoBibliotecario.getEndereco());

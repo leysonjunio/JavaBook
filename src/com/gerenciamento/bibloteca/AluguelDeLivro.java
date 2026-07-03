@@ -3,8 +3,8 @@ package com.gerenciamento.bibloteca;
 public class AluguelDeLivro extends Livros {
     private String nomecliente;
     private int telefone;
-    private int dataSainda;
-    private int dataRetorno;
+    private byte dataSainda;
+    private byte dataRetorno;
 
     public String getNomecliente() {
         return nomecliente;
@@ -23,14 +23,14 @@ public class AluguelDeLivro extends Livros {
     public int getDataSainda() {
         return dataSainda;
     }
-    public void setDataSainda(int dataSainda) {
+    public void setDataSainda(byte dataSainda) {
         this.dataSainda = dataSainda;
     }
 
     public int getDataRetorno() {
         return dataRetorno;
     }
-    public void setDataRetorno(int dataRetorno) {
+    public void setDataRetorno(byte dataRetorno) {
         this.dataRetorno = dataRetorno;
     }
 

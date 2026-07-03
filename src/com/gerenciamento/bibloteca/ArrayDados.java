@@ -8,4 +8,6 @@ public class ArrayDados {
     public static List<AddBibliotecario> listaDeBibliotecarios= new ArrayList<>();
     public static List<Livros> listBooks = new ArrayList<>();
     public static List<AluguelDeLivro> aluguelDosLivros = new ArrayList<>();
+
+
 }
