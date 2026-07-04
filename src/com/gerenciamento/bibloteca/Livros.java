@@ -34,4 +34,7 @@ public class Livros {
             this.autorDoLivro = autorDoLivro;
         }
 
+        public String toString(){
+            return "Livro Cadastrado [Autor: " + this.getAutorDoLivro() + ", Categoria: " + this.getCategoriaDoLivro() + ", Titulo: " + this.getTituloDoLivro() + ", Copias " + this.getQtdDoLivro() + "]";
+        }
 }

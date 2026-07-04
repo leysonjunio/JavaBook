@@ -7,6 +7,7 @@ public class SenhaAdm {
     Scanner scanner = new Scanner(System.in);
     AddAtendente novoAtendente = new AddAtendente();
     AddBibliotecario novoBibliotecario = new AddBibliotecario();
+    Livros newBook = new Livros();
 
     LocalDateTime timeNow = LocalDateTime.now();
     String numeroDoMes = Integer.toString(timeNow.getMonthValue() + 11);
@@ -69,6 +70,20 @@ public class SenhaAdm {
             }
         }else{
             System.out.println("Acesso Negado");
+        }
+    }
+    public void senhaCadastraLivros(int senha){
+        Livros addlivros = new Livros();
+        if (senha == ArrayDados.listaDeBibliotecarios.get(0).getSenhaUsuario()) {
+            System.out.println("Nome do Autor do Livro:");
+            addlivros.setAutorDoLivro(scanner.nextLine());
+            System.out.println("Titulo do livro:");
+            addlivros.setTituloDoLivro(scanner.nextLine());
+            System.out.println("Categoria do livro:");
+            addlivros.setCategoriaDoLivro(scanner.nextLine());
+            System.out.println("Quantas copias são:");
+            addlivros.setQtdDoLivro(scanner.nextInt());
+            ArrayDados.listBooks.add(addlivros);
         }
     }
 }
