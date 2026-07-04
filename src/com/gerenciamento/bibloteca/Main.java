@@ -8,10 +8,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         SenhaAdm senhaDeAdminstracao = new SenhaAdm();
         SenhaAdm senhaparaLivros = new SenhaAdm();
+        AluguelDeLivro newCliente = new AluguelDeLivro();
 
         System.out.println(senhaDeAdminstracao.getSenhaAdm());
 
         boolean mainMenu = true;
+        int bookSpare = 1;
 
         System.out.println("-------------------------------------");
         System.out.println("Bem-vindo ao Portal do Administrador");
@@ -39,7 +41,21 @@ public class Main {
                     ArrayDados.listBooks.forEach(System.out::println);
                     break;
                 case 3:
-
+                    System.out.println("Digite o Index do cadastro do Livro");
+                    int indexBook = scanner.nextInt();
+                    if(bookSpare <= ArrayDados.listBooks.get(indexBook).getQtdDoLivro()){
+                        System.out.println("Tenho livro disponivel");
+                        System.out.println("Informaçoes do Cliente");
+                        newCliente.setNomecliente(scanner.nextLine());
+                        System.out.println("");
+                        newCliente.setTelefone(scanner.nextInt());
+                        System.out.println("");
+                        newCliente.setDataSainda();
+                        System.out.println("data de retorno");
+                        newCliente.setDataRetorno();
+                    }else{
+                        System.out.println("Sem livro no estoque");
+                    }
                     break;
                 default:
                     mainMenu = false;

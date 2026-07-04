@@ -34,23 +34,4 @@ public class AluguelDeLivro extends Livros {
         this.dataRetorno = dataRetorno;
     }
 
-    @Override
-    public String getCategoriaDoLivro() {
-        return super.getCategoriaDoLivro();
-    }
-
-    @Override
-    public String getTituloDoLivro() {
-        return super.getTituloDoLivro();
-    }
-
-    @Override
-    public int getQtdDoLivro() {
-        return super.getQtdDoLivro();
-    }
-
-    @Override
-    public String getAutorDoLivro() {
-        return super.getAutorDoLivro();
-    }
 }
