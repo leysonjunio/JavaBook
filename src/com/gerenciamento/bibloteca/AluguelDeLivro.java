@@ -3,7 +3,7 @@ package com.gerenciamento.bibloteca;
 public class AluguelDeLivro extends Livros {
     private String nomecliente;
     private int telefone;
-    private byte dataSainda;
+    private int dataSainda;
     private byte dataRetorno;
 
     public String getNomecliente() {
@@ -23,7 +23,7 @@ public class AluguelDeLivro extends Livros {
     public int getDataSainda() {
         return dataSainda;
     }
-    public void setDataSainda(byte dataSainda) {
+    public void setDataSainda(int dataSainda) {
         this.dataSainda = dataSainda;
     }
 

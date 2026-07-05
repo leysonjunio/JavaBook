@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        LocalDateTime time = LocalDateTime.now();
         Scanner scanner = new Scanner(System.in);
         SenhaAdm senhaDeAdminstracao = new SenhaAdm();
         SenhaAdm senhaparaLivros = new SenhaAdm();
@@ -12,6 +13,7 @@ public class Main {
 
         System.out.println(senhaDeAdminstracao.getSenhaAdm());
 
+        int today = time.getDayOfMonth();
         boolean mainMenu = true;
         int bookSpare = 1;
 
@@ -43,16 +45,17 @@ public class Main {
                 case 3:
                     System.out.println("Digite o Index do cadastro do Livro");
                     int indexBook = scanner.nextInt();
+                    scanner.nextLine();
                     if(bookSpare <= ArrayDados.listBooks.get(indexBook).getQtdDoLivro()){
                         System.out.println("Tenho livro disponivel");
                         System.out.println("Informaçoes do Cliente");
                         newCliente.setNomecliente(scanner.nextLine());
-                        System.out.println("");
+                        System.out.println("Infromar o telefone");
                         newCliente.setTelefone(scanner.nextInt());
-                        System.out.println("");
-                        newCliente.setDataSainda();
+                        System.out.println("Data Atual");
+                        newCliente.setDataSainda(today);
                         System.out.println("data de retorno");
-                        newCliente.setDataRetorno();
+                        newCliente.setDataRetorno(scanner.nextByte());
                     }else{
                         System.out.println("Sem livro no estoque");
                     }
