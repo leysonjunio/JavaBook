@@ -34,4 +34,7 @@ public class AluguelDeLivro extends Livros {
         this.dataRetorno = dataRetorno;
     }
 
+    public String toString(){
+        return "Aluguel Cadastrado [Autor: " + this.getNomecliente() + ", Categoria: " + this.getTelefone() + ", Titulo: " + this.getDataSainda() + ", Copias " + this.getDataRetorno() + "]";
+    }
 }

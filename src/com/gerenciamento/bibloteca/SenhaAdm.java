@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class SenhaAdm {
+    Livros newBooks = new Livros();
     Scanner scanner = new Scanner(System.in);
     AddAtendente novoAtendente = new AddAtendente();
     AddBibliotecario novoBibliotecario = new AddBibliotecario();
@@ -43,7 +44,7 @@ public class SenhaAdm {
                     System.out.println("Ederenço: " + novoAtendente.getEndereco());
                     System.out.println("Telefone: " + novoAtendente.getTelefone());
                     System.out.println("Salario: " + novoAtendente.getSalario());
-                    ArrayDados.listaDeAtendetes.add(novoAtendente);
+                    Db.listaDeAtendetes.add(novoAtendente);
                     break;
                 case 2:
                     System.out.println("Cadastro de Bibliotecario");
@@ -62,7 +63,7 @@ public class SenhaAdm {
                     System.out.println("Ederenço: " + novoBibliotecario.getEndereco());
                     System.out.println("Telefone: " + novoBibliotecario.getTelefone());
                     System.out.println("Salario: " + novoBibliotecario.getSalario());
-                    ArrayDados.listaDeBibliotecarios.add(novoBibliotecario);
+                    Db.listaDeBibliotecarios.add(novoBibliotecario);
                     break;
                 default:
                     System.out.println("Opção incorreta");
@@ -74,7 +75,7 @@ public class SenhaAdm {
     }
     public void senhaCadastraLivros(int senha){
         Livros addlivros = new Livros();
-        if (senha == ArrayDados.listaDeBibliotecarios.get(0).getSenhaUsuario()) {
+        if (senha == Db.listaDeBibliotecarios.get(0).getSenhaUsuario()) {
             System.out.println("Nome do Autor do Livro:");
             addlivros.setAutorDoLivro(scanner.nextLine());
             System.out.println("Titulo do livro:");
@@ -83,7 +84,7 @@ public class SenhaAdm {
             addlivros.setCategoriaDoLivro(scanner.nextLine());
             System.out.println("Quantas copias são:");
             addlivros.setQtdDoLivro(scanner.nextInt());
-            ArrayDados.listBooks.add(addlivros);
+            Db.DataBaseConfig.salvarLivro(newBooks.getTituloDoLivro(), newBooks.getCategoriaDoLivro(), newBooks.getQtdDoLivro(), newBooks.getAutorDoLivro());
         }
     }
 }

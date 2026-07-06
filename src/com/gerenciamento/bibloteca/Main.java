@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Db.DataBaseConfig.createTable();
         LocalDateTime time = LocalDateTime.now();
         Scanner scanner = new Scanner(System.in);
         SenhaAdm senhaDeAdminstracao = new SenhaAdm();
@@ -26,8 +27,9 @@ public class Main {
             System.out.println("1 - Adicionar Funcionario");
             System.out.println("2 - Cadastro dos Livros");
             System.out.println("3 - Aluguel do Livro");
-            System.out.println("4 - ");
+            System.out.println("4 - Retorno do Aluguel");
             System.out.println("5 - ");
+            System.out.println("Digite qualquer tecla para sair");
 
             int opcao = scanner.nextByte();
             scanner.nextLine();
@@ -40,13 +42,13 @@ public class Main {
                 case 2:
                     System.out.println("Digite a senha:");
                     senhaparaLivros.senhaCadastraLivros(scanner.nextInt());
-                    ArrayDados.listBooks.forEach(System.out::println);
+                    Db.listBooks.forEach(System.out::println);
                     break;
                 case 3:
                     System.out.println("Digite o Index do cadastro do Livro");
                     int indexBook = scanner.nextInt();
                     scanner.nextLine();
-                    if(bookSpare <= ArrayDados.listBooks.get(indexBook).getQtdDoLivro()){
+                    if(bookSpare <= Db.listBooks.get(indexBook).getQtdDoLivro()){
                         System.out.println("Tenho livro disponivel");
                         System.out.println("Informaçoes do Cliente");
                         newCliente.setNomecliente(scanner.nextLine());
@@ -54,18 +56,23 @@ public class Main {
                         newCliente.setTelefone(scanner.nextInt());
                         System.out.println("Data Atual");
                         newCliente.setDataSainda(today);
+                        System.out.println(newCliente.getDataSainda());
                         System.out.println("data de retorno");
                         newCliente.setDataRetorno(scanner.nextByte());
+                        Db.aluguelDosLivros.add(newCliente);
                     }else{
                         System.out.println("Sem livro no estoque");
                     }
+                    break;
+                case 4:
+
                     break;
                 default:
                     mainMenu = false;
                     break;
             }
 
-            ArrayDados.listaDeAtendetes.forEach(System.out::println);
+            Db.listaDeAtendetes.forEach(System.out::println);
         }
     }
 }
