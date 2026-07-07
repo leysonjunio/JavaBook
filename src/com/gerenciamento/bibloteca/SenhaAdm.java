@@ -4,11 +4,9 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class SenhaAdm {
-    Livros newBooks = new Livros();
     Scanner scanner = new Scanner(System.in);
     AddAtendente novoAtendente = new AddAtendente();
     AddBibliotecario novoBibliotecario = new AddBibliotecario();
-    Livros newBook = new Livros();
 
     LocalDateTime timeNow = LocalDateTime.now();
     String numeroDoMes = Integer.toString(timeNow.getMonthValue() + 11);
@@ -25,10 +23,12 @@ public class SenhaAdm {
             System.out.println("Acesso concedido");
             System.out.println("1 - Adicionar Atendente");
             System.out.println("2 - Adicionar Bibliotecario");
+            char position;
             byte opcao = scanner.nextByte();
             scanner.nextLine();
             switch (opcao){
                 case 1:
+                    position = 'A';
                     System.out.println("Cadastro de Atendente");
                     System.out.println("Digite o Nome: ");
                     novoAtendente.setNome(scanner.nextLine());
@@ -45,8 +45,10 @@ public class SenhaAdm {
                     System.out.println("Telefone: " + novoAtendente.getTelefone());
                     System.out.println("Salario: " + novoAtendente.getSalario());
                     Db.listaDeAtendetes.add(novoAtendente);
+                    Db.DataBaseConfig.salvePosition(novoAtendente.getNome(), novoAtendente.getEndereco(), novoAtendente.getTelefone(), 0 , novoAtendente.getSalario(), position);
                     break;
                 case 2:
+                    position = 'B';
                     System.out.println("Cadastro de Bibliotecario");
                     System.out.println("Digite o Nome: ");
                     novoBibliotecario.setNome(scanner.nextLine());
@@ -64,6 +66,7 @@ public class SenhaAdm {
                     System.out.println("Telefone: " + novoBibliotecario.getTelefone());
                     System.out.println("Salario: " + novoBibliotecario.getSalario());
                     Db.listaDeBibliotecarios.add(novoBibliotecario);
+                    Db.DataBaseConfig.salvePosition(novoBibliotecario.getNome(), novoBibliotecario.getEndereco(), novoBibliotecario.getTelefone(), novoBibliotecario.getSenhaUsuario(), novoBibliotecario.getSalario(), position);
                     break;
                 default:
                     System.out.println("Opção incorreta");
@@ -74,16 +77,17 @@ public class SenhaAdm {
         }
     }
     public void senhaCadastraLivros(int senha){
-        Livros addlivros = new Livros();
+        Livros newBooks = new Livros();
         if (senha == Db.listaDeBibliotecarios.get(0).getSenhaUsuario()) {
             System.out.println("Nome do Autor do Livro:");
-            addlivros.setAutorDoLivro(scanner.nextLine());
+            newBooks.setAutorDoLivro(scanner.nextLine());
             System.out.println("Titulo do livro:");
-            addlivros.setTituloDoLivro(scanner.nextLine());
+            newBooks.setTituloDoLivro(scanner.nextLine());
             System.out.println("Categoria do livro:");
-            addlivros.setCategoriaDoLivro(scanner.nextLine());
+            newBooks.setCategoriaDoLivro(scanner.nextLine());
             System.out.println("Quantas copias são:");
-            addlivros.setQtdDoLivro(scanner.nextInt());
+            newBooks.setQtdDoLivro(scanner.nextInt());
+            scanner.nextLine();
             Db.DataBaseConfig.salvarLivro(newBooks.getTituloDoLivro(), newBooks.getCategoriaDoLivro(), newBooks.getQtdDoLivro(), newBooks.getAutorDoLivro());
         }
     }

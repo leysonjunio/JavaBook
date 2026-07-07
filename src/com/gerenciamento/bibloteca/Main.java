@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Db.DataBaseConfig.createTable();
+        Db.DataBaseConfig.createTable_Books();
+        Db.DataBaseConfig.CreateTable_Position();
         LocalDateTime time = LocalDateTime.now();
         Scanner scanner = new Scanner(System.in);
         SenhaAdm senhaDeAdminstracao = new SenhaAdm();
@@ -42,6 +43,7 @@ public class Main {
                 case 2:
                     System.out.println("Digite a senha:");
                     senhaparaLivros.senhaCadastraLivros(scanner.nextInt());
+                    scanner.nextLine();
                     Db.listBooks.forEach(System.out::println);
                     break;
                 case 3:
