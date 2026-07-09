@@ -41,8 +41,11 @@ public class Main {
                     senhaDeAdminstracao.verificaSenha(scanner.nextLine());
                     continue;
                 case 2:
+                    System.out.println("Digite seu nome:");
+                    String usarioDigitado = scanner.nextLine();
                     System.out.println("Digite a senha:");
-                    senhaparaLivros.senhaCadastraLivros(scanner.nextInt());
+                    int senhaDigitada = scanner.nextInt();
+                    senhaparaLivros.senhaCadastraLivros(usarioDigitado, senhaDigitada);
                     scanner.nextLine();
                     Db.listBooks.forEach(System.out::println);
                     break;

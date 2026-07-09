@@ -1,16 +1,11 @@
 package com.gerenciamento.bibloteca;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Db {
     public static List<AddAtendente> listaDeAtendetes= new ArrayList<>();
-    public static List<AddBibliotecario> listaDeBibliotecarios= new ArrayList<>();
     public static List<Livros> listBooks = new ArrayList<>();
     public static List<AluguelDeLivro> aluguelDosLivros = new ArrayList<>();
 
@@ -25,6 +20,7 @@ public class Db {
             }
             return DriverManager.getConnection(URL);
         }
+
         public static void CreateTable_Position(){
             String sql = "CREATE TABLE IF NOT EXISTS AddBibliotecario ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -92,6 +88,26 @@ public class Db {
             } catch (SQLException e) {
                 System.out.println("Erro ao salvar livro: " + e.getMessage());
             }
+        }
+
+        public List<AddBibliotecario> listaDeBibliotecarios(){
+            List<AddBibliotecario> lista = new ArrayList<>();
+            String url = "jdbc:sqlite:biblioteca.db";
+            String sql = "SELECT usuario, senha FROM bibliotecario";
+
+            try(Connection conn = DriverManager.getConnection(url);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery()){
+                while(rs.next()){
+                    String user = rs.getString("usuario");
+                    int pass = rs.getInt("senha");
+                    AddBibliotecario b = new AddBibliotecario( user, pass);
+                    lista.add(b);
+                }
+            }catch (SQLException e){
+                System.out.println("Erro ao listar" + e.getMessage());
+            }
+            return lista;
         }
     }
 }

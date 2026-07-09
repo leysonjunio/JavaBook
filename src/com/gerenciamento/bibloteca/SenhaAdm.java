@@ -1,6 +1,7 @@
 package com.gerenciamento.bibloteca;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class SenhaAdm {
@@ -65,7 +66,6 @@ public class SenhaAdm {
                     System.out.println("Ederenço: " + novoBibliotecario.getEndereco());
                     System.out.println("Telefone: " + novoBibliotecario.getTelefone());
                     System.out.println("Salario: " + novoBibliotecario.getSalario());
-                    Db.listaDeBibliotecarios.add(novoBibliotecario);
                     Db.DataBaseConfig.salvePosition(novoBibliotecario.getNome(), novoBibliotecario.getEndereco(), novoBibliotecario.getTelefone(), novoBibliotecario.getSenhaUsuario(), novoBibliotecario.getSalario(), position);
                     break;
                 default:
@@ -76,9 +76,20 @@ public class SenhaAdm {
             System.out.println("Acesso Negado");
         }
     }
-    public void senhaCadastraLivros(int senha){
+    public void senhaCadastraLivros(String usarioDigitado, int senhaDigitada){
+        Db.DataBaseConfig gereciador = new Db.DataBaseConfig();
+        List<AddBibliotecario> minhasInformacoes = gereciador.listaDeBibliotecarios();
         Livros newBooks = new Livros();
-        if (senha == Db.listaDeBibliotecarios.get(0).getSenhaUsuario()) {
+
+        boolean autenticado = false;
+
+        for(AddBibliotecario b : minhasInformacoes){
+            if(minhasInformacoes.getNome().equals(usarioDigitado) && senhaDigitada == minhasInformacoes.getSenha()){
+                autenticado = true;
+                break;
+            }
+        }
+        if (autenticado) {
             System.out.println("Nome do Autor do Livro:");
             newBooks.setAutorDoLivro(scanner.nextLine());
             System.out.println("Titulo do livro:");

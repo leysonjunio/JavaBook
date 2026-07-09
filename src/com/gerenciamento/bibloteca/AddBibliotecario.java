@@ -7,6 +7,10 @@ public class AddBibliotecario{
     private int senhaUsuario;
     private double salario;
 
+    public AddBibliotecario(String user, int pass) {
+    }
+
+
     public String getNome() {
         return nome;
     }
@@ -35,44 +39,6 @@ public class AddBibliotecario{
         return salario;
     }
     public void setSalario(double salario) {this.salario = salario;}
-
-    public static class Gerenciamento extends Livros {
-        @Override
-        public String getTituloDoLivro() {
-            return super.getTituloDoLivro();
-        }
-        @Override
-        public void setTituloDoLivro(String tituloDoLivro) {
-            super.setTituloDoLivro(tituloDoLivro);
-        }
-
-        @Override
-        public String getCategoriaDoLivro() {
-            return super.getCategoriaDoLivro();
-        }
-        @Override
-        public void setCategoriaDoLivro(String categoriaDoLivro) {
-            super.setCategoriaDoLivro(categoriaDoLivro);
-        }
-
-        @Override
-        public int getQtdDoLivro() {
-            return super.getQtdDoLivro();
-        }
-        @Override
-        public void setQtdDoLivro(int qtdDoLivro) {
-            super.setQtdDoLivro(qtdDoLivro);
-        }
-
-        @Override
-        public String getAutorDoLivro() {
-            return super.getAutorDoLivro();
-        }
-        @Override
-        public void setAutorDoLivro(String autorDoLivro) {
-            super.setAutorDoLivro(autorDoLivro);
-        }
-    }
 
     public String toString(){
         return "Bibliotecario [Nome: " + this.getNome() + ", Endereço: " + this.getEndereco() + ", telefone: " + this.getTelefone() + ", salario: " + this.getSalario() + ", senha unica: " + this.getSenhaUsuario() + "]";

@@ -1,6 +1,9 @@
 package com.gerenciamento.bibloteca;
 
 public class AddAtendente extends AddBibliotecario {
+    public AddAtendente(String user, int pass) {
+    }
+
     @Override
     public String getNome() {
         return super.getNome();
